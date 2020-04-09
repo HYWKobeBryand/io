@@ -8,7 +8,6 @@ Distributed under the Boost Software License, Version 1.0.
 #define BOOST_IO_IOS_STATE_HPP
 
 #include <boost/io_fwd.hpp>
-#include <boost/config/workaround.hpp>
 #include <ios>
 #ifndef BOOST_NO_STD_LOCALE
 #include <locale>
@@ -29,7 +28,7 @@ public:
         : s_save_(s)
         , a_save_(s.flags()) { }
 
-    ios_flags_saver(state_type& s, const aspect_type& a)
+    ios_flags_saver(state_type& s, aspect_type a)
         : s_save_(s)
         , a_save_(s.flags(a)) { }
 
@@ -58,7 +57,7 @@ public:
         : s_save_(s)
         , a_save_(s.precision()) { }
 
-    ios_precision_saver(state_type& s, const aspect_type& a)
+    ios_precision_saver(state_type& s, aspect_type a)
         : s_save_(s)
         , a_save_(s.precision(a)) { }
 
@@ -87,7 +86,7 @@ public:
         : s_save_(s)
         , a_save_(s.width()) { }
 
-    ios_width_saver(state_type& s, const aspect_type& a)
+    ios_width_saver(state_type& s, aspect_type a)
         : s_save_(s)
         , a_save_(s.width(a)) { }
 
@@ -117,7 +116,7 @@ public:
         : s_save_(s)
         , a_save_(s.rdstate()) { }
 
-    basic_ios_iostate_saver(state_type& s, const aspect_type& a)
+    basic_ios_iostate_saver(state_type& s, aspect_type a)
         : s_save_(s)
         , a_save_(s.rdstate()) {
             s.clear(a);
@@ -149,11 +148,7 @@ public:
         : s_save_(s)
         , a_save_(s.exceptions()) { }
 
-#if BOOST_WORKAROUND(__BORLANDC__, BOOST_TESTED_AT(0x582))
     basic_ios_exception_saver(state_type& s, aspect_type a)
-#else
-    basic_ios_exception_saver(state_type& s, const aspect_type& a)
-#endif
         : s_save_(s)
         , a_save_(s.exceptions()) {
         s.exceptions(a);
@@ -185,7 +180,7 @@ public:
         : s_save_(s)
         , a_save_(s.tie()) { }
 
-    basic_ios_tie_saver(state_type& s, const aspect_type& a)
+    basic_ios_tie_saver(state_type& s, aspect_type a)
         : s_save_(s)
         , a_save_(s.tie(a)) { }
 
@@ -215,7 +210,7 @@ public:
         : s_save_(s)
         , a_save_(s.rdbuf()) { }
 
-    basic_ios_rdbuf_saver(state_type& s, const aspect_type& a)
+    basic_ios_rdbuf_saver(state_type& s, aspect_type a)
         : s_save_(s)
         , a_save_(s.rdbuf(a)) { }
 
@@ -245,7 +240,7 @@ public:
         : s_save_(s)
         , a_save_(s.fill()) { }
 
-    basic_ios_fill_saver(state_type& s, const aspect_type& a)
+    basic_ios_fill_saver(state_type& s, aspect_type a)
         : s_save_(s)
         , a_save_(s.fill(a)) { }
 
@@ -308,7 +303,7 @@ public:
         , a_save_(s.iword(i))
         , i_save_(i) { }
 
-    ios_iword_saver(state_type& s, index_type i, const aspect_type& a)
+    ios_iword_saver(state_type& s, index_type i, aspect_type a)
         : s_save_(s)
         , a_save_(s.iword(i))
         , i_save_(i) {
@@ -343,7 +338,7 @@ public:
         , a_save_(s.pword(i))
         , i_save_(i) { }
 
-    ios_pword_saver(state_type& s, index_type i, const aspect_type& a)
+    ios_pword_saver(state_type& s, index_type i, aspect_type a)
         : s_save_(s)
         , a_save_(s.pword(i))
         , i_save_(i) {
