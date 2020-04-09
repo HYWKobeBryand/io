@@ -7,6 +7,7 @@ Distributed under the Boost Software License, Version 1.0.
 #ifndef BOOST_IO_IOS_STATE_HPP
 #define BOOST_IO_IOS_STATE_HPP
 
+#include <boost/config.hpp>
 #include <boost/io_fwd.hpp>
 #include <ios>
 #ifndef BOOST_NO_STD_LOCALE
